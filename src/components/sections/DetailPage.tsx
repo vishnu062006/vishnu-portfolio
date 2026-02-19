@@ -58,11 +58,11 @@ export default function DetailPage({ onNavigate }: DetailPageProps) {
   const archBlocks = [
     {
       title: "Frontend", color: tokens.accent,
-      items: ["React.js + Hooks", "Tailwind CSS", "React Router v6", "Axios (API layer)", "Context API"],
+      items: ["React.js + Hooks", "Tailwind CSS", "React Router v6",  "REST APIs"],
     },
     {
       title: "Backend", color: tokens.cyan,
-      items: ["Node.js + Express", "MongoDB + Mongoose", "JWT Authentication", "Multer + Cloudinary", "bcryptjs"],
+      items: ["Node.js + Express", "MongoDB + Mongoose", "JWT Authentication"],
     },
   ];
 
@@ -101,8 +101,8 @@ export default function DetailPage({ onNavigate }: DetailPageProps) {
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Badge variant="accent">MERN Stack</Badge>
           <Badge variant="green">Completed</Badge>
-          <Badge>2024</Badge>
-          <Badge>Solo Project</Badge>
+          <Badge>2025</Badge>
+          <Badge>Group Project</Badge>
           <Badge variant="cyan">Full-Stack</Badge>
         </div>
       </div>

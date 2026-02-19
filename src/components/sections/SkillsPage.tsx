@@ -49,7 +49,7 @@ function SkillGroup({ title, color, skills, index }: (typeof skillGroups)[number
   );
 }
 
-const ALSO_USED = ["React Router", "Context API", "JWT", "bcryptjs", "Multer", "Cloudinary", "Mongoose", "dotenv", "CORS", "Nodemon", "ESLint", "Prettier", "npm", "Axios"];
+const ALSO_USED = ["React Router", "Context API", "JWT", "Cloudinary", "Mongoose", "dotenv", "Nodemon", "npm", "REST APIs", ];
 
 export default function SkillsPage() {
   return (
