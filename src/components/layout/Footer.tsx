@@ -21,7 +21,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         flexWrap: "wrap", gap: 16,
       }}>
         <div style={{ fontFamily: "'Geist Mono', monospace", fontSize: 12, color: tokens.text3 }}>
-          © 2024 <span style={{ color: tokens.accent }}>Vishnu Mashalkar</span> · Built with Next.js
+          © 2026 <span style={{ color: tokens.accent }}>Vishnu Mashalkar</span> · Built with Love using Next.js
         </div>
         <div style={{ display: "flex", gap: 16 }}>
           {pages.map((p) => (
