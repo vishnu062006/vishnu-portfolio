@@ -168,3 +168,38 @@ body {
 @keyframes barGrow {
   to { transform: scaleX(1); }
 }
+/* ─── 3D Tilt Card ───────────────────────────────── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease;
+}
+
+/* ─── Page Transitions ───────────────────────────── */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.page-enter {
+  animation: slideInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Mobile Responsive ──────────────────────────── */
+@media (max-width: 768px) {
+  body { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .projects-grid { grid-template-columns: 1fr !important; }
+  .skills-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .arch-grid { grid-template-columns: 1fr !important; }
+  .learnings-grid { grid-template-columns: 1fr !important; }
+
+  .nav-links-pill { display: none !important; }
+  .nav-hire-btn { display: none !important; }
+}
