@@ -5,9 +5,9 @@ import GlowButton from "@/components/ui/GlowButton";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const SOCIALS = [
-  { icon: "✉",  label: "Email",   val: "vishnu@example.com",     href: "mailto:vishnu@example.com"      },
-  { icon: "⌥",  label: "GitHub",  val: "github.com/vishnu",      href: "https://github.com/vishnu"      },
-  { icon: "in", label: "LinkedIn",val: "linkedin.com/in/vishnu",  href: "https://linkedin.com/in/vishnu" },
+  { icon: "✉",  label: "Email",   val: "vishnumashalkar@gmail.com",     href: "mailto:vishnumashalkar@gmail.com"      },
+  { icon: "⌥",  label: "GitHub",  val: "github.com/vishnu062006",      href: "https://github.com/vishnu062006"      },
+  { icon: "in", label: "LinkedIn",val: "linkedin.com/in/vishnumashalkar",  href: "https://linkedin.com/in/vishnumashalkar" },
 ];
 
 export default function ContactPage() {
