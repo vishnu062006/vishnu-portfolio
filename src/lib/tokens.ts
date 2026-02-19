@@ -29,12 +29,12 @@ export const projects = [
       "Full-stack college marketplace where students buy, sell, and trade within their campus. Complete CRUD, JWT auth, REST API, Cloudinary for media.",
     stack: ["React", "Tailwind", "Node.js", "Express.js", "MongoDB", "JWT"],
     year: "2024",
-    github: "https://github.com/vishnu",
+    github: "https://github.com/vishnu062006",
     demo: "#",
   },
   {
     id: "sms",
-    name: "Student Mgmt System",
+    name: "Student LMS",
     icon: "📋",
     featured: false,
     hasDetail: false,
@@ -42,7 +42,7 @@ export const projects = [
       "Academic record and enrollment management system with relational data model, grade tracking, and course management built for institutional scale.",
     stack: ["Java", "Python", "MySQL", "REST API"],
     year: "2024",
-    github: "https://github.com/vishnu",
+    github: "https://github.com/vishnu062006",
     demo: "#",
   },
 ] as const;
