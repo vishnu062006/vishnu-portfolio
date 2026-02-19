@@ -4,10 +4,10 @@ import Badge from "@/components/ui/Badge";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const MILESTONES = [
-  { year: "2022", active: true,  title: "B.E. Computer Science",  sub: "BMS College of Engineering, Bengaluru",             badge: "ongoing" as const },
-  { year: "2023", active: false, title: "First React Project",    sub: "Built component systems, learned Tailwind CSS"                                  },
-  { year: "2023", active: false, title: "CampusMart",             sub: "First full-stack MERN app — REST API, JWT auth"                                  },
-  { year: "2024", active: false, title: "Student Mgmt System",    sub: "Java/Python backend, relational MySQL schema"                                    },
+  { year: "2024", active: true,  title: "B.E. Computer Science",  sub: "BMS College of Engineering, Bengaluru",             badge: "ongoing" as const },
+  { year: "2025", active: false, title: "First React Project",    sub: "Built component systems, learned Tailwind CSS"                                  },
+  { year: "2025", active: false, title: "CampusMart",             sub: "First full-stack MERN app — REST API, JWT auth"                                  },
+  { year: "2026", active: false, title: "Student Mgmt System",    sub: "Java/Python backend, relational MySQL schema"                                    },
   { year: "Now",  active: true,  title: "Seeking Opportunities",  sub: "Open to internships, full-time, and collabs",       badge: "open"    as const },
 ];
 
