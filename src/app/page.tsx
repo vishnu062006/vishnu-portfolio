@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback } from "react";
+import React from "react";
 import { tokens } from "@/lib/tokens";
 
 import Cursor      from "@/components/layout/Cursor";
@@ -15,7 +16,7 @@ import ContactPage from "@/components/sections/ContactPage";
 
 type Page = "home" | "projects" | "detail" | "about" | "skills" | "contact";
 
-const PAGE_COMPONENTS: Record<Page, (props: { onNavigate: (p: string) => void }) => JSX.Element> = {
+const PAGE_COMPONENTS: Record<Page, (props: { onNavigate: (p: string) => void }) => React.ReactElement> = {
   home:     (p) => <HomePage    onNavigate={p.onNavigate} />,
   projects: (p) => <ProjectsPage onNavigate={p.onNavigate} />,
   detail:   (p) => <DetailPage  onNavigate={p.onNavigate} />,
