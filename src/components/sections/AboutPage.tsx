@@ -15,6 +15,7 @@ const SOCIALS = [
   { icon: "⌥", label: "GitHub",   val: "github.com/vishnu062006",         href: "https://github.com/vishnu062006"         },
   { icon: "in", label: "LinkedIn", val: "linkedin.com/in/vishnumashalkar",    href: "https://linkedin.com/in/vishnumashalkar"    },
   { icon: "✉",  label: "Email",   val: "vishnumashalkar@gmail.com",        href: "mailto:vishnumashalkar@gmail.com"         },
+  { icon: "LC",  label: "LeetCode",   val: "leetcode.com/u/VishnuMashalkar/",        href: "https://leetcode.com/u/VishnuMashalkar/"         },
 ];
 
 export default function AboutPage() {
