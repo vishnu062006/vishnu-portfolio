@@ -117,11 +117,13 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: string) => vo
 
       <div style={{ maxWidth: 1040, margin: "0 auto", width: "100%", position: "relative", zIndex: 2, paddingTop: 100 }}>
 
+        {/* Status pill */}
         <div style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "8px 16px", border: "1px solid rgba(16,185,129,0.22)", borderRadius: 30, marginBottom: 48, background: "rgba(16,185,129,0.055)", animation: "fadeUp 0.6s ease both" }}>
           <span style={{ width: 8, height: 8, borderRadius: "50%", background: tokens.green, boxShadow: `0 0 10px ${tokens.green}`, animation: "pulse 2s infinite", display: "inline-block" }} />
           <span style={{ fontSize: 13, color: tokens.green, fontFamily: "'Geist Mono', monospace" }}>Available for Internship / Full-time</span>
         </div>
 
+        {/* Headline */}
         <div style={{ animation: "fadeUp 0.7s ease 0.1s both" }}>
           <p style={{ color: tokens.text2, fontWeight: 400, fontSize: "clamp(18px,2.2vw,24px)", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", marginBottom: 12 }}>
             Hi, I&apos;m Vishnu Mashalkar
@@ -134,10 +136,12 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: string) => vo
           </h1>
         </div>
 
+        {/* Subtitle */}
         <p style={{ fontSize: "clamp(15px,1.8vw,18px)", color: tokens.text2, maxWidth: 520, lineHeight: 1.75, fontWeight: 400, margin: "28px 0 44px", animation: "fadeUp 0.7s ease 0.2s both" }}>
           Frontend-focused MERN Stack Developer. I craft pixel-perfect interfaces with component-driven architecture, clean APIs, and startup-grade speed.
         </p>
 
+        {/* CTAs */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", animation: "fadeUp 0.7s ease 0.3s both" }}>
           <GlowButton primary onClick={() => onNavigate("projects")}>
             View Projects
@@ -145,10 +149,11 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: string) => vo
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </GlowButton>
+
           <GlowButton onClick={() => onNavigate("about")}>About Me</GlowButton>
 
           {/* Resume Download */}
-          
+          <a
             href="/resume.pdf"
             download="Vishnu_Mashalkar_Resume.pdf"
             data-hover
@@ -162,25 +167,38 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: string) => vo
               color: tokens.green, textDecoration: "none",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => { const el = e.currentTarget; el.style.background = "rgba(16,185,129,0.14)"; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 0 24px rgba(16,185,129,0.25)"; }}
-            onMouseLeave={(e) => { const el = e.currentTarget; el.style.background = "rgba(16,185,129,0.07)"; el.style.transform = ""; el.style.boxShadow = ""; }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget;
+              el.style.background = "rgba(16,185,129,0.14)";
+              el.style.transform = "translateY(-2px)";
+              el.style.boxShadow = "0 0 24px rgba(16,185,129,0.25)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget;
+              el.style.background = "rgba(16,185,129,0.07)";
+              el.style.transform = "";
+              el.style.boxShadow = "";
+            }}
           >
             ↓ Resume
           </a>
         </div>
 
+        {/* Tech badges */}
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 48, animation: "fadeUp 0.7s ease 0.4s both" }}>
           {["React.js", "Node.js", "MongoDB", "Tailwind CSS", "Express.js", "MySQL"].map((t) => (
             <Badge key={t}>{t}</Badge>
           ))}
         </div>
 
+        {/* Stats */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginTop: 80, maxWidth: 620 }}>
           <StatCard value="2+"   label="YEARS LEARNING" delay="0.1s" />
           <StatCard value="5+"   label="PROJECTS BUILT"  delay="0.2s" />
           <StatCard value="MERN" label="CORE STACK"       delay="0.3s" />
           <StatCard value="∞"    label="LINES WRITTEN"    delay="0.4s" />
         </div>
+
       </div>
     </div>
   );
