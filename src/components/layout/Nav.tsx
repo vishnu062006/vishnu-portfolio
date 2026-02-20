@@ -16,6 +16,7 @@ const NAV_ITEMS: { id: Page; label: string }[] = [
 interface NavProps {
   active: Page;
   onNavigate: (p: Page) => void;
+  children?: React.ReactNode;
 }
 
 export default function Nav({ active, onNavigate }: NavProps) {
@@ -90,9 +91,12 @@ export default function Nav({ active, onNavigate }: NavProps) {
       </div>
 
       {/* CTA */}
-      <GlowButton primary onClick={() => onNavigate("contact")} style={{ fontSize: 13, padding: "8px 16px" }}>
+      <GlowButton primary onClick={() => onNavigate("contact")} style={{ fontSize: 13, padding: "8px 16px" }} className="nav-hire-btn">
         Hire Me ↗
       </GlowButton>
+
+      {/* Mobile nav (passed as children) */}
+      {children}
     </nav>
   );
 }

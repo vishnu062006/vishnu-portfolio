@@ -203,3 +203,14 @@ body {
   .nav-links-pill { display: none !important; }
   .nav-hire-btn { display: none !important; }
 }
+@media (max-width: 768px) {
+  body { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+  .projects-grid  { grid-template-columns: 1fr !important; }
+  .skills-grid    { grid-template-columns: 1fr !important; }
+  .contact-grid   { grid-template-columns: 1fr !important; }
+  .about-grid     { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .arch-grid      { grid-template-columns: 1fr !important; }
+  .learnings-grid { grid-template-columns: 1fr !important; }
+  .nav-hire-btn   { display: none !important; }
+}
