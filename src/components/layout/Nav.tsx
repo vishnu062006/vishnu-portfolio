@@ -19,7 +19,7 @@ interface NavProps {
   children?: React.ReactNode;
 }
 
-export default function Nav({ active, onNavigate }: NavProps) {
+export default function Nav({ active, onNavigate, children }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -91,8 +91,8 @@ export default function Nav({ active, onNavigate }: NavProps) {
       </div>
 
       {/* CTA */}
-      <GlowButton primary onClick={() => onNavigate("contact")} style={{ fontSize: 13, padding: "8px 16px" }} className="nav-hire-btn">
-        Hire Me ↗
+      <GlowButton primary onClick={() => onNavigate("contact")} style={{ fontSize: 13, padding: "8px 16px" }}>
+        <>Hire Me ↗</>
       </GlowButton>
 
       {/* Mobile nav (passed as children) */}

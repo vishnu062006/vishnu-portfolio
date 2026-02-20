@@ -8,6 +8,7 @@ interface GlowButtonProps {
   onClick?: () => void;
   type?: "button" | "submit";
   style?: React.CSSProperties;
+  className?: string;
 }
 
 export default function GlowButton({
