@@ -21,6 +21,7 @@ export const tokens = {
 export const projects = [
   {
     id: "placewise",
+    slug: "placewise",
     name: "PlaceWise",
     category: "AI Product",
     icon: "PW",
@@ -32,12 +33,22 @@ export const projects = [
     stack: ["RAG", "ChromaDB", "FastAPI", "Groq LLM", "Resume Parsing"],
     highlights: ["RAG Architecture", "ATS-style Evaluation", "Skill Gap Roadmaps"],
     metric: "AI readiness scoring",
+    status: "Currently building",
+    problem:
+      "Students often do not know why a resume is weak, how placement-ready they are, or which skills to improve first.",
+    solution:
+      "PlaceWise turns resumes into structured intelligence with parsing, vector search, LLM evaluation, and personalized roadmaps.",
+    architecture: ["Resume Parser", "FastAPI Evaluation API", "ChromaDB Vector Store", "Groq LLM Layer", "Roadmap Generator"],
+    challenges: ["Designing useful scoring criteria", "Keeping LLM feedback structured", "Mapping resume gaps to actionable next steps"],
+    outcomes: ["Placement readiness scoring", "ATS-style resume feedback", "Personalized improvement plans"],
+    roadmap: ["GitHub profile analysis", "Interview question generation", "College placement dashboard"],
     year: "2026",
     github: "https://github.com/vishnu062006",
     demo: "#",
   },
   {
     id: "eventara",
+    slug: "eventara",
     name: "Eventara",
     category: "SaaS Platform",
     icon: "EV",
@@ -49,12 +60,22 @@ export const projects = [
     stack: ["React", "Node.js", "Express.js", "MongoDB", "Auth"],
     highlights: ["Authentication", "Event Registration", "Dashboard System"],
     metric: "Organizer workflow system",
+    status: "In development",
+    problem:
+      "Campus and community events need simple creation, registration, participant tracking, and organizer dashboards in one workflow.",
+    solution:
+      "Eventara provides a full-stack event operations layer with authentication, event setup, registrations, and dashboard views.",
+    architecture: ["React Dashboard", "Authentication Layer", "Event API", "Registration Flow", "Participant Management"],
+    challenges: ["Designing organizer-first workflows", "Handling event states clearly", "Keeping dashboards scannable"],
+    outcomes: ["Centralized event management", "Cleaner participant workflows", "Reusable SaaS-style architecture"],
+    roadmap: ["Analytics dashboard", "QR-based check-ins", "Team-based organizer roles"],
     year: "2026",
     github: "https://github.com/vishnu062006",
     demo: "#",
   },
   {
     id: "campusmart",
+    slug: "campusmart",
     name: "Campus Mart",
     category: "Marketplace",
     icon: "CM",
@@ -66,12 +87,22 @@ export const projects = [
     stack: ["React", "Tailwind", "Node.js", "Express.js", "MongoDB", "JWT"],
     highlights: ["Listings", "Search", "User Profiles"],
     metric: "Peer-to-peer campus commerce",
+    status: "Built",
+    problem:
+      "Students need a trusted campus-only way to discover, buy, and sell useful products without noisy general marketplaces.",
+    solution:
+      "Campus Mart creates a student marketplace with listings, search, profiles, authentication, and campus commerce flows.",
+    architecture: ["React Frontend", "Node + Express API", "MongoDB Listings", "JWT Authentication", "Cloudinary Media"],
+    challenges: ["Designing trustworthy listing flows", "Balancing search and discovery", "Managing authenticated marketplace actions"],
+    outcomes: ["Campus listing experience", "Reusable marketplace model", "Full-stack CRUD and auth foundation"],
+    roadmap: ["Saved searches", "Chat between buyers and sellers", "Campus verification layer"],
     year: "2025",
     github: "https://github.com/vishnu062006",
     demo: "#",
   },
   {
     id: "microinternship",
+    slug: "microinternship",
     name: "MicroInternship",
     category: "Career Platform",
     icon: "MI",
@@ -83,6 +114,15 @@ export const projects = [
     stack: ["React", "Node.js", "REST API", "MongoDB", "UX Systems"],
     highlights: ["Opportunity Discovery", "Student Focused Design", "Career Growth Ecosystem"],
     metric: "Career discovery layer",
+    status: "Concept to product",
+    problem:
+      "Students often miss smaller career-building experiences because opportunities are fragmented across groups and platforms.",
+    solution:
+      "MicroInternship organizes short-form internships, projects, and skill-building opportunities into a focused student ecosystem.",
+    architecture: ["Opportunity Feed", "Student Profiles", "Matching Logic", "Application Workflow", "Career Progress Layer"],
+    challenges: ["Creating a useful discovery model", "Prioritizing student fit", "Designing lightweight opportunity workflows"],
+    outcomes: ["Opportunity discovery system", "Student-focused product direction", "Career growth ecosystem foundation"],
+    roadmap: ["Recommendation engine", "Mentor dashboards", "Verified opportunity partners"],
     year: "2026",
     github: "https://github.com/vishnu062006",
     demo: "#",

@@ -1,5 +1,6 @@
 "use client";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { tokens, projects } from "@/lib/tokens";
 import Badge from "@/components/ui/Badge";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -116,11 +117,9 @@ function ProjectCard({ project, onClick, index }: {
           <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} data-hover>
             GitHub
           </a>
-          {project.hasDetail && (
-            <button type="button" onClick={(e) => { e.stopPropagation(); onClick?.(); }} data-hover>
-              Case Study
-            </button>
-          )}
+          <button type="button" onClick={(e) => { e.stopPropagation(); onClick?.(); }} data-hover>
+            Case Study
+          </button>
         </div>
       </div>
     </motion.article>
@@ -128,6 +127,8 @@ function ProjectCard({ project, onClick, index }: {
 }
 
 export default function ProjectsPage({ onNavigate }: { onNavigate: (p: string) => void }) {
+  const router = useRouter();
+
   return (
     <div className="premium-section-page">
       <div className="mesh-bg" />
@@ -149,7 +150,7 @@ export default function ProjectsPage({ onNavigate }: { onNavigate: (p: string) =
             key={project.id}
             project={project}
             index={index}
-            onClick={project.hasDetail ? () => onNavigate("detail") : undefined}
+            onClick={() => router.push(`/projects/${project.slug}`)}
           />
         ))}
       </motion.div>
@@ -167,6 +168,11 @@ export default function ProjectsPage({ onNavigate }: { onNavigate: (p: string) =
         <p>
           The current focus is AI-assisted student outcomes: resume intelligence, opportunity discovery, event infrastructure, and dashboards that feel production-ready from day one.
         </p>
+        <div className="roadmap-strip">
+          {["PlaceWise", "Eventara Improvements", "Campus Mart Expansion", "MicroInternship Ecosystem"].map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
       </motion.div>
     </div>
   );
