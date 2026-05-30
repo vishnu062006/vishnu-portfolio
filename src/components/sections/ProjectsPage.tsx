@@ -1,130 +1,173 @@
 "use client";
-import { useState, useRef, useCallback } from "react";
-import { useInView } from "@/hooks";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { tokens, projects } from "@/lib/tokens";
 import Badge from "@/components/ui/Badge";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-function ProjectCard({ project, onClick, index }: {
-  project: (typeof projects)[number];
-  onClick?: () => void;
-  index: number;
-}) {
-  const [hover, setHover]   = useState(false);
-  const [mouse, setMouse]   = useState({ x: 0, y: 0 });
-  const [tilt, setTilt]     = useState({ rx: 0, ry: 0 });
-  const cardRef             = useRef<HTMLDivElement>(null);
-  const [ref, inView]       = useInView(0.1);
+const cardVariants = {
+  hidden: { opacity: 0, y: 34, filter: "blur(12px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)" },
+};
 
-  const onMove = useCallback((e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const r  = cardRef.current.getBoundingClientRect();
-    const x  = e.clientX - r.left;
-    const y  = e.clientY - r.top;
-    setMouse({ x, y });
-    setTilt({
-      rx: ((y / r.height) - 0.5) * -14,
-      ry: ((x / r.width)  - 0.5) *  14,
-    });
-  }, []);
-
-  const setRefs = (el: HTMLDivElement | null) => {
-    (ref as React.MutableRefObject<HTMLDivElement | null>).current = el;
-    cardRef.current = el;
-  };
-
+function ProjectPreview({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
-    <div
-      ref={setRefs}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => { setHover(false); setTilt({ rx: 0, ry: 0 }); }}
-      onMouseMove={onMove}
-      onClick={onClick}
-      data-hover
-      className="card-shine"
-      style={{
-        position: "relative",
-        background: hover ? "rgba(14,19,30,0.92)" : "rgba(12,16,24,0.80)",
-        border: `1px solid ${hover ? "rgba(61,126,255,0.28)" : "rgba(255,255,255,0.06)"}`,
-        borderRadius: 20, padding: 32,
-        cursor: onClick ? "none" : "default",
-        overflow: "hidden",
-        opacity: inView ? 1 : 0,
-        transform: inView
-          ? `perspective(900px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateY(${hover ? -4 : 0}px)`
-          : "translateY(30px)",
-        transition: hover
-          ? "border-color 0.2s, background 0.2s, box-shadow 0.2s"
-          : `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`,
-        boxShadow: hover ? "0 28px 60px rgba(0,0,0,0.5)" : "none",
-        display: "flex", flexDirection: "column", gap: 20,
-        transformStyle: "preserve-3d",
-      }}
-    >
-      {hover && (
-        <div style={{
-          position: "absolute", width: 380, height: 380, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(61,126,255,0.11) 0%, transparent 70%)",
-          left: mouse.x - 190, top: mouse.y - 190,
-          pointerEvents: "none", zIndex: 0,
-        }} />
-      )}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: hover ? "linear-gradient(90deg,transparent,rgba(61,126,255,0.55),transparent)" : "transparent", transition: "background 0.3s" }} />
-
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-          <div style={{ width: 48, height: 48, borderRadius: 14, background: "rgba(61,126,255,0.08)", border: "1px solid rgba(61,126,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
-            {project.icon}
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            {project.featured && <Badge variant="accent">Featured</Badge>}
-            <span style={{ color: hover ? tokens.accent : tokens.text3, fontSize: 18, transform: hover ? "translate(3px,-3px)" : "none", transition: "all 0.2s", display: "block" }}>↗</span>
-          </div>
+    <div className="project-preview">
+      <div className="preview-topbar">
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className="preview-body">
+        <div className="preview-sidebar">
+          <strong>{project.icon}</strong>
+          <i />
+          <i />
+          <i />
         </div>
-
-        <h3 style={{ fontSize: 24, fontWeight: 800, letterSpacing: "-0.04em", color: tokens.text1, marginBottom: 10 }}>{project.name}</h3>
-        <p style={{ fontSize: 14, color: tokens.text2, lineHeight: 1.7, marginBottom: 24 }}>{project.description}</p>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 24 }}>
-          {project.stack.map((t) => <Badge key={t} variant="accent">{t}</Badge>)}
-        </div>
-
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {[{ label: "GitHub ↗", href: project.github }, { label: "Live Demo ↗", href: project.demo }].map(({ label, href }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()} data-hover
-              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8, padding: "7px 14px", fontSize: 12.5, color: tokens.text2, fontFamily: "'Cabinet Grotesk',sans-serif", fontWeight: 500, textDecoration: "none", transition: "all 0.2s" }}
-              onMouseEnter={(e) => { const el = e.currentTarget; el.style.background = "rgba(255,255,255,0.08)"; el.style.color = tokens.text1; }}
-              onMouseLeave={(e) => { const el = e.currentTarget; el.style.background = "rgba(255,255,255,0.04)"; el.style.color = tokens.text2; }}
-            >{label}</a>
-          ))}
-          {project.hasDetail && (
-            <button onClick={(e) => { e.stopPropagation(); onClick?.(); }} data-hover
-              style={{ marginLeft: "auto", background: "rgba(61,126,255,0.08)", border: "1px solid rgba(61,126,255,0.22)", borderRadius: 8, padding: "7px 14px", fontSize: 12.5, color: tokens.accent, fontFamily: "'Cabinet Grotesk',sans-serif", fontWeight: 600, cursor: "none", transition: "all 0.2s" }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(61,126,255,0.16)")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(61,126,255,0.08)")}
-            >Case Study →</button>
-          )}
+        <div className="preview-main">
+          <div className="preview-heading">
+            <span>{project.category}</span>
+            <b>{project.metric}</b>
+          </div>
+          <div className="preview-chart">
+            {[62, 84, 48, 92, 76].map((height, i) => (
+              <motion.em
+                key={i}
+                initial={{ height: 12 }}
+                whileInView={{ height }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 + i * 0.05, duration: 0.55 }}
+              />
+            ))}
+          </div>
+          <div className="preview-rows">
+            {project.highlights.slice(0, 3).map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default function ProjectsPage({ onNavigate }: { onNavigate: (p: string) => void }) {
+function ProjectCard({ project, onClick, index }: {
+  project: (typeof projects)[number];
+  onClick?: () => void;
+  index: number;
+}) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 160, damping: 18 });
+  const springY = useSpring(y, { stiffness: 160, damping: 18 });
+  const rotateX = useTransform(springY, [-240, 240], [5, -5]);
+  const rotateY = useTransform(springX, [-240, 240], [-6, 6]);
+  const featured = index === 0;
+
   return (
-    <div style={{ maxWidth: 1040, margin: "0 auto", padding: "100px 24px 80px" }}>
-      <SectionHeader label="Work" title="Selected Projects" sub="Real products solving real problems. No tutorial clones." />
-      <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
-        {projects.map((p, i) => (
-          <ProjectCard key={p.id} project={p} index={i} onClick={p.hasDetail ? () => onNavigate("detail") : undefined} />
-        ))}
-      </div>
-      <div style={{ marginTop: 40, padding: 32, border: "1px dashed rgba(255,255,255,0.06)", borderRadius: 20, textAlign: "center" }}>
-        <div style={{ fontSize: 13, color: tokens.text3, fontFamily: "'Geist Mono',monospace" }}>
-          more_projects.push( <span style={{ color: tokens.accent }}>&hellip;coming_soon</span> )
+    <motion.article
+      className={`project-bento-card premium-glass card-shine ${featured ? "project-featured" : ""}`}
+      variants={cardVariants}
+      whileHover={{ y: -8, scale: 1.01 }}
+      style={{ rotateX, rotateY }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left - rect.width / 2);
+        y.set(e.clientY - rect.top - rect.height / 2);
+      }}
+      onMouseLeave={() => {
+        x.set(0);
+        y.set(0);
+      }}
+      onClick={onClick}
+      data-hover
+    >
+      <div className="project-glow" />
+      <ProjectPreview project={project} index={index} />
+
+      <div className="project-card-content">
+        <div className="project-card-top">
+          <Badge variant={project.id === "placewise" ? "cyan" : "accent"}>{project.category}</Badge>
+          <span>{project.year}</span>
+        </div>
+
+        <div>
+          <h3>{project.name}</h3>
+          <p className="project-impact">{project.impact}</p>
+          <p className="project-description">{project.description}</p>
+        </div>
+
+        <div className="project-highlights">
+          {project.highlights.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+
+        <div className="project-stack">
+          {project.stack.map((tech) => (
+            <Badge key={tech}>{tech}</Badge>
+          ))}
+        </div>
+
+        <div className="project-actions">
+          <a href={project.demo} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} data-hover>
+            Live Demo
+          </a>
+          <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} data-hover>
+            GitHub
+          </a>
+          {project.hasDetail && (
+            <button type="button" onClick={(e) => { e.stopPropagation(); onClick?.(); }} data-hover>
+              Case Study
+            </button>
+          )}
         </div>
       </div>
+    </motion.article>
+  );
+}
+
+export default function ProjectsPage({ onNavigate }: { onNavigate: (p: string) => void }) {
+  return (
+    <div className="premium-section-page">
+      <div className="mesh-bg" />
+      <SectionHeader
+        label="Featured Projects"
+        title="Startup-grade product showcases."
+        sub="A focused collection of AI, SaaS, marketplace, and career products built with product thinking, systems design, and polished user experience."
+      />
+
+      <motion.div
+        className="projects-bento-grid"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ staggerChildren: 0.1 }}
+      >
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            onClick={project.hasDetail ? () => onNavigate("detail") : undefined}
+          />
+        ))}
+      </motion.div>
+
+      <motion.div
+        className="currently-building premium-glass"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <div>
+          <span>Currently Building</span>
+          <h3>PlaceWise, Resume Analyzer, and Hackathon Platform workflows</h3>
+        </div>
+        <p>
+          The current focus is AI-assisted student outcomes: resume intelligence, opportunity discovery, event infrastructure, and dashboards that feel production-ready from day one.
+        </p>
+      </motion.div>
     </div>
   );
 }

@@ -1,75 +1,89 @@
 "use client";
-import { useInView } from "@/hooks";
+import { motion } from "framer-motion";
 import { tokens, skillGroups } from "@/lib/tokens";
-import Badge from "@/components/ui/Badge";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-function SkillBar({ name, pct, level, delay }: { name: string; pct: number; level: string; delay: string }) {
-  const [ref, inView] = useInView(0.1);
-  return (
-    <div ref={ref} style={{ marginBottom: 18, opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(-10px)", transition: `all 0.5s ease ${delay}` }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7 }}>
-        <span style={{ fontSize: 14, fontWeight: 600, color: tokens.text1 }}>{name}</span>
-        <span style={{ fontSize: 11, color: tokens.text3, fontFamily: "'Geist Mono',monospace", textTransform: "uppercase", letterSpacing: "0.06em" }}>{level}</span>
-      </div>
-      <div style={{ height: 3, background: "rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden" }}>
-        <div style={{
-          height: "100%", borderRadius: 2,
-          background: "linear-gradient(90deg, #3d7eff, #22d3ee)",
-          width: inView ? `${pct}%` : "0%",
-          transition: `width 0.9s cubic-bezier(0.4,0,0.2,1) ${delay}`,
-          boxShadow: "0 0 8px rgba(61,126,255,0.5)",
-        }} />
-      </div>
-    </div>
-  );
-}
-
 function SkillGroup({ title, color, skills, index }: (typeof skillGroups)[number] & { index: number }) {
-  const [ref, inView] = useInView(0.1);
   return (
-    <div
-      ref={ref}
-      className="card-shine"
-      style={{
-        background: "rgba(12,16,24,0.8)", border: "1px solid rgba(255,255,255,0.06)",
-        borderRadius: 20, padding: 28,
-        opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(20px)",
-        transition: `all 0.5s ease ${index * 0.1}s`,
-      }}
+    <motion.div
+      className="skill-bento-card premium-glass card-shine"
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ delay: index * 0.07, duration: 0.55 }}
+      whileHover={{ y: -6, borderColor: `${color}55` }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Geist Mono',monospace", fontSize: 11, color, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 24 }}>
-        <span style={{ width: 8, height: 8, borderRadius: "50%", background: color, boxShadow: `0 0 8px ${color}`, display: "inline-block" }} />
-        {title}
+      <div className="skill-card-heading">
+        <span style={{ background: color, boxShadow: `0 0 18px ${color}` }} />
+        <p style={{ color }}>{title}</p>
       </div>
-      {[...skills].map((s, i) => (
-        <SkillBar key={s.name} name={s.name} pct={s.pct} level={s.level} delay={`${i * 0.08}s`} />
-      ))}
-    </div>
+      <div className="skill-list">
+        {[...skills].map((skill, skillIndex) => (
+          <div key={skill.name} className="skill-row">
+            <div>
+              <strong>{skill.name}</strong>
+              <small>{skill.level}</small>
+            </div>
+            <div className="skill-meter">
+              <motion.span
+                style={{ background: `linear-gradient(90deg, ${color}, ${tokens.cyan})` }}
+                initial={{ width: 0 }}
+                whileInView={{ width: `${skill.pct}%` }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 + skillIndex * 0.05, duration: 0.8 }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
 }
 
-const ALSO_USED = ["React Router", "Context API", "JWT", "Cloudinary", "Mongoose", "dotenv", "Nodemon", "npm", "REST APIs", ];
+const HIGHLIGHTS = [
+  { label: "Product UI", value: "React systems, dashboards, premium interaction design" },
+  { label: "AI Workflows", value: "RAG, vector search, LLM evaluation, resume intelligence" },
+  { label: "Backend", value: "REST APIs, auth, data models, FastAPI and Node services" },
+  { label: "Shipping", value: "GitHub, Vercel, Postman, iterative product delivery" },
+];
 
 export default function SkillsPage() {
   return (
-    <div style={{ maxWidth: 1040, margin: "0 auto", padding: "100px 24px 80px" }}>
-      <SectionHeader label="Capabilities" title="Skills" sub="Grouped by layer — frontend-first, full-stack capable." />
+    <div className="premium-section-page">
+      <div className="mesh-bg" />
+      <SectionHeader
+        label="Tech Stack Bento Grid"
+        title="A practical stack for AI products."
+        sub="Grouped by product layer instead of badge spam: frontend, backend, AI, databases, and developer tooling."
+      />
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
-        {skillGroups.map((g, i) => (
-          <SkillGroup key={g.title} {...g} index={i} />
+      <div className="skills-grid">
+        {skillGroups.map((group, index) => (
+          <SkillGroup key={group.title} {...group} index={index} />
         ))}
       </div>
 
-      <div style={{ marginTop: 40, padding: 28, background: "rgba(12,16,24,0.6)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 20 }}>
-        <div style={{ fontFamily: "'Geist Mono',monospace", fontSize: 11, color: tokens.text3, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 20, textAlign: "center" }}>
-          Also worked with
-        </div>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}>
-          {ALSO_USED.map((t) => <Badge key={t}>{t}</Badge>)}
-        </div>
-      </div>
+      <motion.div
+        className="github-highlight-grid"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        transition={{ staggerChildren: 0.08 }}
+      >
+        {HIGHLIGHTS.map((item) => (
+          <motion.div
+            key={item.label}
+            className="github-highlight-card premium-glass"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0 },
+            }}
+          >
+            <p>{item.label}</p>
+            <h3>{item.value}</h3>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 }
