@@ -95,10 +95,17 @@ function ProjectCard({ project, onClick, index }: {
         <div>
           <h3>{project.name}</h3>
           <p className="project-impact">{project.impact}</p>
-          <p className="project-description">{project.description}</p>
+          <div className="project-problem-block">
+            <span>Problem</span>
+            <p>{project.problem}</p>
+          </div>
+          <div className="project-problem-block">
+            <span>What it does</span>
+            <p>{project.does}</p>
+          </div>
         </div>
 
-        <div className="project-highlights">
+        <div className="project-feature-list">
           {project.highlights.map((item) => (
             <span key={item}>{item}</span>
           ))}
@@ -112,10 +119,10 @@ function ProjectCard({ project, onClick, index }: {
 
         <div className="project-actions">
           <a href={project.demo} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} data-hover>
-            Live Demo
+            View Demo
           </a>
           <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} data-hover>
-            GitHub
+            View Code
           </a>
           <button type="button" onClick={(e) => { e.stopPropagation(); onClick?.(); }} data-hover>
             Case Study

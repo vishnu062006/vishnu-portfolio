@@ -92,7 +92,7 @@ export default function Nav({ active, onNavigate, children }: NavProps) {
 
       {/* CTA */}
       <GlowButton primary onClick={() => onNavigate("contact")} style={{ fontSize: 13, padding: "8px 16px" }}>
-        <>Hire Me ↗</>
+        <>Let&apos;s Build Something</>
       </GlowButton>
 
       {/* Mobile nav (passed as children) */}

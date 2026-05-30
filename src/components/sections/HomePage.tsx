@@ -121,10 +121,10 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: string) => vo
             Vishnu Mashalkar / AI Engineer + Product Builder
           </motion.p>
           <motion.h1 variants={reveal} className="hero-title">
-            I Build <span>AI-Powered Products</span> That Solve Real Problems.
+            I build AI tools students actually use <span>not just demo projects.</span>
           </motion.h1>
           <motion.p variants={reveal} className="hero-subtitle">
-            Full-stack developer building AI tools, campus products, and startup-grade systems across React, FastAPI, LLM integrations, and scalable backend architecture.
+            Built multiple AI products using RAG, FastAPI, and real-world workflows.
           </motion.p>
 
           <motion.div variants={reveal} className="hero-actions">
@@ -135,7 +135,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: string) => vo
               </GlowButton>
             </Magnetic>
             <Magnetic>
-              <GlowButton onClick={() => onNavigate("contact")}>Start a Conversation</GlowButton>
+              <GlowButton onClick={() => onNavigate("contact")}>Let&apos;s Build Something</GlowButton>
             </Magnetic>
             <a className="resume-button" href="/resume.pdf" download="Vishnu_Mashalkar_Resume.pdf" data-hover>
               Resume

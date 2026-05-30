@@ -52,9 +52,9 @@ export default function SkillsPage() {
     <div className="premium-section-page">
       <div className="mesh-bg" />
       <SectionHeader
-        label="Tech Stack Bento Grid"
+        label="Skills"
         title="A practical stack for AI products."
-        sub="Grouped by product layer instead of badge spam: frontend, backend, AI, databases, and developer tooling."
+        sub="Grouped into the layers I use to build usable AI products: frontend, backend, AI, and tools."
       />
 
       <div className="skills-grid">

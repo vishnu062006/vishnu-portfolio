@@ -36,6 +36,8 @@ export const projects = [
     status: "Currently building",
     problem:
       "Students often do not know why a resume is weak, how placement-ready they are, or which skills to improve first.",
+    does:
+      "Analyzes resumes with RAG, vector search, and LLM feedback to create readiness scores and personal improvement roadmaps.",
     solution:
       "PlaceWise turns resumes into structured intelligence with parsing, vector search, LLM evaluation, and personalized roadmaps.",
     architecture: ["Resume Parser", "FastAPI Evaluation API", "ChromaDB Vector Store", "Groq LLM Layer", "Roadmap Generator"],
@@ -63,6 +65,8 @@ export const projects = [
     status: "In development",
     problem:
       "Campus and community events need simple creation, registration, participant tracking, and organizer dashboards in one workflow.",
+    does:
+      "Gives organizers a full-stack event workspace for publishing events, handling registrations, and managing participants.",
     solution:
       "Eventara provides a full-stack event operations layer with authentication, event setup, registrations, and dashboard views.",
     architecture: ["React Dashboard", "Authentication Layer", "Event API", "Registration Flow", "Participant Management"],
@@ -90,6 +94,8 @@ export const projects = [
     status: "Built",
     problem:
       "Students need a trusted campus-only way to discover, buy, and sell useful products without noisy general marketplaces.",
+    does:
+      "Creates a campus marketplace with listings, search, user profiles, authentication, and peer-to-peer commerce flows.",
     solution:
       "Campus Mart creates a student marketplace with listings, search, profiles, authentication, and campus commerce flows.",
     architecture: ["React Frontend", "Node + Express API", "MongoDB Listings", "JWT Authentication", "Cloudinary Media"],
@@ -117,6 +123,8 @@ export const projects = [
     status: "Concept to product",
     problem:
       "Students often miss smaller career-building experiences because opportunities are fragmented across groups and platforms.",
+    does:
+      "Organizes micro-internships, short projects, and career-building opportunities into a focused student discovery platform.",
     solution:
       "MicroInternship organizes short-form internships, projects, and skill-building opportunities into a focused student ecosystem.",
     architecture: ["Opportunity Feed", "Student Profiles", "Matching Logic", "Application Workflow", "Career Progress Layer"],
@@ -135,10 +143,9 @@ export const skillGroups = [
     color: "#3d7eff",
     skills: [
       { name: "React.js",          pct: 88, level: "Proficient" },
+      { name: "Next.js",           pct: 76, level: "Building" },
+      { name: "TypeScript",        pct: 72, level: "Building" },
       { name: "Tailwind CSS",      pct: 85, level: "Proficient" },
-      { name: "JavaScript ES6+",   pct: 83, level: "Proficient" },
-      { name: "HTML5 / CSS3",      pct: 91, level: "Strong"     },
-      { name: "React Router",      pct: 74, level: "Familiar"   },
     ],
   },
   {
@@ -147,39 +154,31 @@ export const skillGroups = [
     skills: [
       { name: "Node.js",           pct: 70, level: "Familiar" },
       { name: "Express.js",        pct: 68, level: "Familiar" },
+      { name: "FastAPI",           pct: 70, level: "Familiar" },
+      { name: "Spring Boot",       pct: 56, level: "Learning" },
       { name: "REST API Design",   pct: 73, level: "Familiar" },
-      { name: "Java",              pct: 56, level: "Learning" },
-      { name: "Python",            pct: 55, level: "Learning" },
     ],
   },
   {
-    title: "AI / ML",
+    title: "AI",
     color: "#8b5cf6",
     skills: [
       { name: "RAG Pipelines",      pct: 72, level: "Building" },
-      { name: "LLM Integrations",   pct: 76, level: "Building" },
-      { name: "FastAPI",            pct: 70, level: "Familiar" },
       { name: "ChromaDB",           pct: 64, level: "Learning" },
-      { name: "Prompt Workflows",   pct: 78, level: "Building" },
+      { name: "Groq",               pct: 70, level: "Building" },
+      { name: "Prompt Engineering", pct: 78, level: "Building" },
     ],
   },
   {
-    title: "Databases",
+    title: "Tools",
     color: "#10b981",
     skills: [
       { name: "MongoDB",           pct: 70, level: "Familiar" },
       { name: "MySQL",             pct: 65, level: "Familiar" },
-      { name: "Mongoose ODM",      pct: 68, level: "Familiar" },
-    ],
-  },
-  {
-    title: "Dev Tools",
-    color: "#f59e0b",
-    skills: [
+      { name: "Supabase",          pct: 55, level: "Learning" },
       { name: "Git & GitHub",      pct: 82, level: "Proficient" },
-      { name: "VS Code",           pct: 92, level: "Daily"      },
       { name: "Postman",           pct: 72, level: "Familiar"   },
-      { name: "Vercel / Netlify",  pct: 66, level: "Familiar"   },
+      { name: "Vercel",            pct: 66, level: "Familiar"   },
     ],
   },
 ] as const;

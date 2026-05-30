@@ -46,8 +46,8 @@ export default function ContactPage() {
       <div className="mesh-bg" />
       <SectionHeader
         label="Contact"
-        title="Let's build something useful."
-        sub="Open to AI product work, startup MVPs, internships, full-stack roles, and focused collaborations."
+        title="Let&apos;s Build Something"
+        sub="Open to internships, collaborations, and AI product roles."
         center
       />
 

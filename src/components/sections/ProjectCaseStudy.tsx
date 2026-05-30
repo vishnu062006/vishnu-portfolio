@@ -98,7 +98,7 @@ export default function ProjectCaseStudy({
           </div>
           <h1>{project.name}</h1>
           <p className="case-impact">{project.impact}</p>
-          <p className="case-description">{project.description}</p>
+          <p className="case-description">{project.does}</p>
           <div className="case-actions">
             <a href={project.demo} target="_blank" rel="noopener noreferrer" data-hover>
               Visit Live Product
@@ -136,12 +136,24 @@ export default function ProjectCaseStudy({
         <CaseBlock eyebrow="Problem" title="The user problem">
           <p>{project.problem}</p>
         </CaseBlock>
-        <CaseBlock eyebrow="Solution" title="The product response">
+        <CaseBlock eyebrow="How it works" title="From input to useful output">
           <p>{project.solution}</p>
         </CaseBlock>
       </div>
 
-      <CaseBlock eyebrow="Architecture" title="System overview">
+      <motion.section
+        className="case-preview-section"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+      >
+        <p>UI Preview</p>
+        <h2>Screenshots and product surface</h2>
+        <ProductMockup project={project} />
+      </motion.section>
+
+      <CaseBlock eyebrow="Tech Architecture" title="System overview">
         <div className="architecture-flow">
           {project.architecture.map((item, index) => (
             <div key={item}>
@@ -170,7 +182,7 @@ export default function ProjectCaseStudy({
       </div>
 
       <div className="case-content-grid">
-        <CaseBlock eyebrow="Outcomes" title="What it delivers">
+        <CaseBlock eyebrow="Impact / Use Case" title="What it delivers">
           <ul>
             {project.outcomes.map((item) => (
               <li key={item}>{item}</li>
