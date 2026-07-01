@@ -1,50 +1,36 @@
 "use client";
-import { tokens } from "@/lib/tokens";
 
+// Infused with your AI/ML stack to look much more advanced
 const ITEMS = [
   "React.js", "Node.js", "MongoDB", "Tailwind CSS", "Express.js",
-  "TypeScript", "MySQL", "REST APIs", "JWT Auth", "Git", "Vercel",
-  "Next.js", "Mongoose", "Postman", "VS Code",
+  "TypeScript", "Vector Search", "REST APIs", "FastAPI", "ChromaDB",
+  "Next.js", "RAG Pipelines", "PostgreSQL", "System Architecture",
 ];
 
 export default function Marquee() {
-  const repeated = [...ITEMS, ...ITEMS];
+  // Tripled to ensure it never runs out of width on ultra-wide monitors
+  const repeated = [...ITEMS, ...ITEMS, ...ITEMS];
 
   return (
-    <div style={{
-      width: "100%", overflow: "hidden",
-      borderTop: "1px solid rgba(255,255,255,0.05)",
-      borderBottom: "1px solid rgba(255,255,255,0.05)",
-      padding: "14px 0",
-      background: "rgba(255,255,255,0.01)",
-      position: "relative", zIndex: 2,
-      maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
-      WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
-    }}>
-      <div style={{
-        display: "flex", gap: 40,
-        width: "max-content",
-        animation: "marqueeScroll 28s linear infinite",
-      }}>
+    <div 
+      className="w-full overflow-hidden border-y-[1px] border-[#ededed]/10 py-5 bg-[#0a0a0a] relative z-10"
+      style={{
+        maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+        WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+      }}
+    >
+      <div 
+        className="flex gap-12 w-max"
+        style={{ animation: "marqueeScroll 40s linear infinite" }}
+      >
         {repeated.map((item, i) => (
-          <div key={i} style={{
-            display: "flex", alignItems: "center", gap: 40,
-            whiteSpace: "nowrap",
-          }}>
-            <span style={{
-              fontSize: 13, fontWeight: 600,
-              fontFamily: "'Cabinet Grotesk', sans-serif",
-              color: tokens.text3,
-              letterSpacing: "0.02em",
-              textTransform: "uppercase",
-            }}>
+          <div key={i} className="flex items-center gap-12 whitespace-nowrap">
+            <span className="text-sm font-bold uppercase tracking-widest text-[#ededed]/40">
               {item}
             </span>
-            <span style={{
-              width: 4, height: 4, borderRadius: "50%",
-              background: tokens.accent, opacity: 0.4,
-              display: "inline-block", flexShrink: 0,
-            }} />
+            
+            {/* Engineered separator: Acid Yellow Diamond */}
+            <span className="w-1.5 h-1.5 bg-[#E2FF32] rotate-45 flex-shrink-0 opacity-80 shadow-[0_0_8px_rgba(226,255,50,0.5)]" />
           </div>
         ))}
       </div>
@@ -52,7 +38,8 @@ export default function Marquee() {
       <style>{`
         @keyframes marqueeScroll {
           from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
+          /* Shifts exactly one-third since we tripled the array */
+          to   { transform: translateX(calc(-33.333% - 16px)); } 
         }
       `}</style>
     </div>

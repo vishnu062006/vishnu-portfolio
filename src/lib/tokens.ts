@@ -24,7 +24,7 @@ export const projects = [
     slug: "placewise",
     name: "PlaceWise",
     category: "AI Product",
-    icon: "PW",
+    icon: "/icon.png",
     featured: true,
     hasDetail: true,
     impact: "AI placement readiness engine for student career growth.",
@@ -45,8 +45,9 @@ export const projects = [
     outcomes: ["Placement readiness scoring", "ATS-style resume feedback", "Personalized improvement plans"],
     roadmap: ["GitHub profile analysis", "Interview question generation", "College placement dashboard"],
     year: "2026",
-    github: "https://github.com/vishnu062006",
-    demo: "#",
+    github: "https://github.com/vishnu062006/placewise",
+    demo: "https://placewise-ai.vercel.app",
+    image: "/placewise.png",
   },
   {
     id: "eventara",
@@ -74,8 +75,9 @@ export const projects = [
     outcomes: ["Centralized event management", "Cleaner participant workflows", "Reusable SaaS-style architecture"],
     roadmap: ["Analytics dashboard", "QR-based check-ins", "Team-based organizer roles"],
     year: "2026",
-    github: "https://github.com/vishnu062006",
-    demo: "#",
+    github: "https://github.com/vishnu062006/eventara-frontend",
+    demo: "https://theeventara.vercel.app",
+    image: "/eventara.png",
   },
   {
     id: "campusmart",
@@ -104,7 +106,8 @@ export const projects = [
     roadmap: ["Saved searches", "Chat between buyers and sellers", "Campus verification layer"],
     year: "2025",
     github: "https://github.com/vishnu062006",
-    demo: "#",
+    demo: "https://placewise-ai.vercel.app",
+    image: "/campusmart.png",
   },
   {
     id: "microinternship",
@@ -134,6 +137,7 @@ export const projects = [
     year: "2026",
     github: "https://github.com/vishnu062006",
     demo: "#",
+    image: "/microint.png",
   },
 ] as const;
 
