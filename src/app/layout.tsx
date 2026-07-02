@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScrolling from "@/components/layout/SmoothScrolling";
+import TerminalAssistant from "@/components/ui/TerminalAssistant";
 
 export const metadata: Metadata = {
   title: "Vishnu Mashalkar — Frontend Developer",
@@ -24,6 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SmoothScrolling>{children}</SmoothScrolling>
+        
+        {/* Globally floating terminal assistant */}
+        <TerminalAssistant />
       </body>
     </html>
   );
