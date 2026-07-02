@@ -9,7 +9,7 @@ import { projects } from "@/lib/tokens";
 import * as THREE from "three";
 
 const brutalColors = ["#00E5FF", "#E2FF32", "#FF3366", "#B5A1FF"];
-const HERO_ROLES = ["AI", "Full-Stack", "Product"];
+const HERO_ROLES = ["AI", "SaaS", "Product"];
 
 // --- SVGs for Socials ---
 const GithubIcon = ({ size = 24 }) => (
